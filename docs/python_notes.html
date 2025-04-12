@@ -708,7 +708,8 @@ shape: (5, 1)
 <li><p>I sell 3 types of pies at different prices, and I sold the following number of each pie last weekend.</p></li>
 <li><p>I want to know how much money I made per pie type per day.</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/pies.png"><img alt="../_images/pies.png" src="../_images/pies.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/pies.png"><img alt="../_images/pies.png" src="../_images/pies.png" style="width: 500px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">20</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
@@ -739,7 +740,8 @@ Pie sales (#):
 <ul class="simple">
 <li><p>How can we multiply these two arrays together?</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/pies_loop.png"><img alt="../_images/pies_loop.png" src="../_images/pies_loop.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../_images/pies_loop.png"><img alt="../_images/pies_loop.png" src="../_images/pies_loop.png" style="width: 500px;" />
+</a>
 <section id="slowest-method-nested-loop">
 <h3>Slowest method: nested loop<a class="headerlink" href="#slowest-method-nested-loop" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -783,7 +785,8 @@ Pie sales (#):
 </section>
 <section id="no-loop-method-make-them-the-same-size-and-multiply-element-wise">
 <h3>No-loop method: make them the same size, and multiply element-wise<a class="headerlink" href="#no-loop-method-make-them-the-same-size-and-multiply-element-wise" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../_images/pies_broadcast.png"><img alt="../_images/pies_broadcast.png" src="../_images/pies_broadcast.png" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../_images/pies_broadcast.png"><img alt="../_images/pies_broadcast.png" src="../_images/pies_broadcast.png" style="width: 700px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cost_rep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">cost</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1077,7 +1080,8 @@ Pie sales (#):
 <li><p>Labels may be integers or strings</p></li>
 </ul>
 <p>Here are two series of gold medal counts for the 2012 and 2016 Olympics:</p>
-<a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/series.png"><img alt="../_images/series.png" src="../_images/series.png" style="width: 400px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">()</span>
@@ -1185,7 +1189,8 @@ Pie sales (#):
 <li><p>Really just a bunch of Series (with the same index labels) stuck together</p></li>
 <li><p>Made using <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code></p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/dataframe.png"><img alt="../_images/dataframe.png" src="../_images/dataframe.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../_images/dataframe.png"><img alt="../_images/dataframe.png" src="../_images/dataframe.png" style="width: 600px;" />
+</a>
 <p>Creating a DataFrame with a numpy array</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
