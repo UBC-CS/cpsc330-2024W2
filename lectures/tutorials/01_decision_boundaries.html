@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/extra.css?v=6df0ab2b" />
@@ -408,11 +408,10 @@ document.write(`
   <p><img alt="" src="../../_images/330-banner.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1">
 <h1>Tutorial 1<a class="headerlink" href="#tutorial-1" title="Link to this heading">#</a></h1>
-<p>UBC 2024-25</p>
+<p>UBC 2025-26</p>
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
 <p>During this tutorial, you will see another example of classification with decision trees and will take a closer look at decision boundaries.</p>
-<p>Additionally, you may ask for help with the course <a class="reference external" href="https://github.com/UBC-CS/cpsc330-2024W2/blob/main/docs/setup.md">setup</a> if you have not completed this step already. If time allows it, TAs may also welcome questions about HW1.</p>
 <section id="imports">
 <h3>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -444,6 +443,32 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom function to plot decision boundary and tree</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_tree_decision_boundary_and_tree</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">x_label</span><span class="o">=</span><span class="s2">&quot;x-axis&quot;</span><span class="p">,</span> <span class="n">y_label</span><span class="o">=</span><span class="s2">&quot;y-axis&quot;</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="mi">1</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span>
+        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;xticks&quot;</span><span class="p">:</span> <span class="p">(),</span> <span class="s2">&quot;yticks&quot;</span><span class="p">:</span> <span class="p">()},</span>
+        <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width_ratios&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]},</span>
+    <span class="p">)</span>
+    <span class="n">plot_tree_decision_boundary</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x_label</span><span class="p">,</span> <span class="n">y_label</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">custom_plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> 
+                 <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> 
+                 <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Canada&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">],</span>
+                 <span class="n">impurity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p><br><br></p>
 </section>
 </section>
@@ -458,101 +483,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>country</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-130.0437</td>
-      <td>55.9773</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-134.4197</td>
-      <td>58.3019</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-123.0780</td>
-      <td>48.9854</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>-122.7436</td>
-      <td>48.9881</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>-122.2691</td>
-      <td>48.9951</td>
-      <td>USA</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>204</th>
-      <td>-72.7218</td>
-      <td>45.3990</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>205</th>
-      <td>-66.6458</td>
-      <td>45.9664</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>206</th>
-      <td>-79.2506</td>
-      <td>42.9931</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>207</th>
-      <td>-72.9406</td>
-      <td>45.6275</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <th>208</th>
-      <td>-79.4608</td>
-      <td>46.3092</td>
-      <td>Canada</td>
-    </tr>
-  </tbody>
-</table>
-<p>209 rows × 3 columns</p>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,9 +505,6 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;latitude&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/e04b13b99fa27eea1c75054ce252a49bc35949a1f75c851371b239eec0439a3c.png" src="../../_images/e04b13b99fa27eea1c75054ce252a49bc35949a1f75c851371b239eec0439a3c.png" />
 </div>
 </div>
 <section id="question-1">
@@ -645,9 +572,6 @@ document.write(`
 <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/c3cdbd0659f12cd08cedbbb0a449229d2a903d1ed1d6ea0fc8894aaa6dabf1a6.png" src="../../_images/c3cdbd0659f12cd08cedbbb0a449229d2a903d1ed1d6ea0fc8894aaa6dabf1a6.png" />
 </div>
 </div>
 <div class="cell docutils container">
